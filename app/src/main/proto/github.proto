@@ -1,0 +1,14 @@
+package rest;
+
+option java_package = "fr.clouddev.protobufpowered.proto";
+
+message Issue {
+	required string id = 1;
+	required int32 number = 2;
+	optional string title = 3;
+	optional string state = 4;
+	optional string body = 5;
+
+}
+
+

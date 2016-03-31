@@ -13,8 +13,11 @@
         tools:showIn="@layout/activity_main"
         tools:context="fr.clouddev.protobufpowered.MainActivity">
 
-    <TextView
-            android:text="Hello World!"
+    <Button
+            android:id="@+id/bn_issues"
+            android:text="List Issues"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:onClick="openListIssues"/>
 </RelativeLayout>

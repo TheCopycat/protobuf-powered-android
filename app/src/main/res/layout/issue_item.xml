@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_margin="16dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-</LinearLayout>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/abc_text_size_display_1_material"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:id="@+id/textView" android:layout_alignParentLeft="true" android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true" android:layout_marginTop="0dp" android:gravity="center_vertical"
+            android:layout_marginRight="100dip"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/abc_text_size_display_1_material"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:gravity="center_vertical"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/abc_text_size_display_1_material"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="This is a very long text on two lines, that will be cropped at the end hopefully. This is where the description of the issue should be located by the way."
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textView"
+    />
+</RelativeLayout>
