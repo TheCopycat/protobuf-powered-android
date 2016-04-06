@@ -11,4 +11,8 @@ message Issue {
 
 }
 
+message Issues {
+	repeated Issue issues = 1;
+}
+
 
