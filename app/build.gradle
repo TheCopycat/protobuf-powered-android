@@ -1,4 +1,3 @@
-
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
 
@@ -46,4 +45,5 @@ dependencies {
     compile 'com.google.protobuf:protobuf-java:2.6.1'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'fr.clouddev.anyproto:anyproto-converter:0.1-SNAPSHOT'
+    compile 'com.android.support:support-v4:22.2.1'
 }

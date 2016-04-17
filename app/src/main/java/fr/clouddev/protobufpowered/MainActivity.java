@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import fr.clouddev.protobufpowered.tasks.LoadParametersTask;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        new LoadParametersTask(this).execute();
     }
 
     @Override
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settings = new Intent(this, SettingsActivity.class) ;
+            startActivity(settings);
             return true;
         }
 

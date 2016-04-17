@@ -1,0 +1,23 @@
+package preferences;
+
+option java_package = "fr.clouddev.protobufpowered.preferences";
+
+message Preferences {
+	optional int64 interval = 1;
+	optional string user = 2;
+	optional string repo = 3;
+	optional int32 nb_issues = 4;
+}
+
+message GenericPreference {
+	required string name = 1;
+	required string value = 2;
+	optional Type type = 3 [default = STRING];
+}
+
+enum Type {
+	STRING = 0;
+	INT = 1;
+	LONG = 2;
+	BOOL = 3;
+}

@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import fr.clouddev.protobuf.converter.AnyProtoConverter;
+import fr.clouddev.protobufpowered.preferences.Params;
+import fr.clouddev.protobufpowered.preferences.ProtoToPrefConverter;
 import fr.clouddev.protobufpowered.proto.Github;
 import fr.clouddev.protobufpowered.rest.GithubService;
 import retrofit.RestAdapter;
@@ -29,6 +31,7 @@ public class FetchIssuesTask extends AsyncTask<Void,Boolean,List<Github.Issue>> 
     public static final String TAG = FetchIssuesTask.class.getSimpleName();
     public static final String LAST_SYNC = "lastSync";
     public static final String ISSUES = "issues";
+    public static final String INTERVAL = "interval";
     private Context mContext;
     private boolean mOnline;
     private IssueListener mListener;
@@ -44,9 +47,12 @@ public class FetchIssuesTask extends AsyncTask<Void,Boolean,List<Github.Issue>> 
     protected List<Github.Issue> doInBackground(Void... voids) {
         List<Github.Issue> issueList = null;
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        Params.Preferences params = (Params.Preferences) ProtoToPrefConverter
+                .convertFromPrefs(Params.Preferences.newBuilder(),prefs).build();
+        Log.i(TAG,"params "+params.toString());
         SharedPreferences sp = mContext.getSharedPreferences(ISSUES,Context.MODE_PRIVATE);
         Long lastSync = sp.getLong(LAST_SYNC,0L);
-        Long interval = prefs.getLong("interval",10000L);
+        Long interval = prefs.getLong(INTERVAL,10000L);
         if (mOnline || new Date().getTime() - lastSync > interval) {
             publishProgress(true);
             //TODO load from webservice if necessary
@@ -57,7 +63,9 @@ public class FetchIssuesTask extends AsyncTask<Void,Boolean,List<Github.Issue>> 
 
             GithubService githubService = adapter.create(GithubService.class);
 
-            issueList= githubService.fetchIssues("google", "protobuf");
+            String user = prefs.getString("user","google");
+            String repo = prefs.getString("repo","protobuf");
+            issueList= githubService.fetchIssues(user, repo);
 
             Github.Issues issues = Github.Issues.newBuilder().addAllIssues(issueList).build();
             String issuesBase64 = Base64.encodeToString(issues.toByteArray(),Base64.DEFAULT);

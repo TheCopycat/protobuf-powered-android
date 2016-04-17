@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="interval">10000</integer>
+    <string name="user">google</string>
+    <string name="repo">protobuf</string>
+    <integer name="nb_issues">10</integer>
+</resources>
