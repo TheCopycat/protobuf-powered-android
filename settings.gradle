@@ -1,1 +1,4 @@
 include ':app'
+include 'server'
+findProject(':server')?.name = 'protobuf-powered-server'
+
