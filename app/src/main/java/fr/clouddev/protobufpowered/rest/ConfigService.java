@@ -11,6 +11,6 @@ import retrofit.http.Headers;
 public interface ConfigService {
 
     @GET("/config")
-    @Headers("Content-Type: application/www-x-protobuf")
+    @Headers("Accept: application/x-protobuf")
     Params.Preferences getPreferences();
 }
